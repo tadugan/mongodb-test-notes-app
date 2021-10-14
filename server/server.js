@@ -3,7 +3,6 @@ const morgan = require('morgan');
 const connect = require('./connect');
 const {json, urlencoded} = require('body-parser');
 const app = express();
-// import model here TODO:
 const Note = require('../src/models/note');
 
 app.use(morgan('dev'));
@@ -23,7 +22,19 @@ app.get('/notes', async (req, res) => {
     }
 });
 
-// TODO: GET Route - by ID
+// GET note by ID
+app.get('/notes/:id', async (req, res) => {
+    const noteId = req.params.id;
+    try {
+        const note = await Note.findById(noteId)
+            .lean()
+            .exec();
+        res.status(200).json(note);
+    } catch (error) {
+        console.log(`Error getting by ID: ${error}`);
+        res.sendStatus(500);
+    }
+});
 
 // POST a new note
 app.post('/notes', async (req, res) => {
