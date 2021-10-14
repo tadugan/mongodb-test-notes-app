@@ -18,6 +18,8 @@
     "web-vitals": "^1.1.2"
   },
   "scripts": {
+    "client": "react-scripts start",
+    "server": "nodemon --watch server server/server.js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
