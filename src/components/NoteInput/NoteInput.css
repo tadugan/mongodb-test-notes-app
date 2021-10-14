@@ -1,0 +1,17 @@
+.input-content {
+  min-width: 400px;
+}
+
+.input-card {
+  padding: 16px;
+}
+
+.input-header,
+.input-title,
+.input-text {
+  width: 400px;
+}
+
+.input-category {
+  min-width: 184px;
+}
