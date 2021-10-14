@@ -1,4 +1,5 @@
 import { Button, Card, Grid, MenuItem, Select, TextField } from '@material-ui/core';
+import axios from 'axios';
 import React, { useState } from 'react';
 import './NoteInput.css';
 
@@ -10,12 +11,48 @@ function NoteInput() {
 
     const addNote = (event) => {
         event.preventDefault();
-        console.log('click'); // TODO:
-        console.log(`
-        title: ${title}
-        text: ${text}
-        category: ${category}
-        `); // TODO:
+
+        if (areInputsInvalid()) {
+            return;
+        }
+
+        const newNote = {
+            title: title,
+            textBody: text,
+            category: category
+        }
+
+        // Add note to database
+        axios.post('/notes', newNote)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.log(err);
+            });
+
+        clearInputs();
+    };
+
+    const clearInputs = () => {
+        setCategory('category');
+        setText('');
+        setTitle('');
+    };
+
+    const areInputsInvalid = () => {
+        if (text == '') {
+            return true;
+        }
+        else if (title == '') {
+            return true;
+        } 
+        else if (category === 'category' || category == '') {
+            return true;
+        }
+        else {
+            return false;
+        }
     }
 
     return (
