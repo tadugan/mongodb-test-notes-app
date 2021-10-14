@@ -48,9 +48,20 @@ app.post('/notes', async (req, res) => {
     }
 })
 
-// TODO: PUT Route
+// PUT to update a note title
+app.put('/notes/update/title/:id', async (req, res) => {
+    const noteId = req.params.id;
+    const newTitle = req.body;
+    try {
+        await Note.findByIdAndUpdate(noteId, newTitle);
+        res.status(200).send();
+    } catch (error) {
+        console.log(`Error updating a note title: ${error}`);
+        res.sendStatus(500);
+    }
+});
 
-// DELETE Route
+// DELETE a note
 app.delete('/notes/:id', async (req, res) => {
     const noteId = req.params.id;
     try {
