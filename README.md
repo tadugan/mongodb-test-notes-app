@@ -1,6 +1,7 @@
 # Note Taking App with MongoDB
 ## Description
 ___
+
 This simple note taking app is my first application using MongoDB.
 <br />
 <br />
