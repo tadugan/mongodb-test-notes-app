@@ -5,12 +5,12 @@ const mongoose = require('mongoose');
 const noteSchema = new mongoose.Schema({
     title: {
         type: String,
-        require: true,
+        required: true,
         unique: true
     },
     textBody: {
         type: String,
-        require: true
+        required: true
     }
 }, {timestamps: true});
 

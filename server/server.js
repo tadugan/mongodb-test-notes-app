@@ -25,7 +25,17 @@ app.get('/notes', async (req, res) => {
 
 // TODO: GET Route - by ID
 
-// TODO: POST Route
+// POST a new note
+app.post('/notes', async (req, res) => {
+    const noteToCreate = req.body;
+    try {
+        const note = await Note.create(noteToCreate);
+        res.status(201).json(note.toJSON());
+    } catch (error) {
+        console.log(`Error posting a note: ${error}`);
+        res.sendStatus(500);
+    }
+})
 
 // TODO: UPDATE Route
 
