@@ -48,9 +48,19 @@ app.post('/notes', async (req, res) => {
     }
 })
 
-// TODO: UPDATE Route
+// TODO: PUT Route
 
-// TODO: DELETE Route
+// DELETE Route
+app.delete('/notes/:id', async (req, res) => {
+    const noteId = req.params.id;
+    try {
+        await Note.deleteOne({_id: noteId});
+        res.status(204).send();
+    } catch (error) {
+        console.log(`Error deleting a note: ${error}`);
+        res.sendStatus(500);
+    }
+});
 
 const PORT = 5000;
 
