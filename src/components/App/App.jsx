@@ -3,6 +3,7 @@ import "./App.css";
 import NoteInput from "../NoteInput/NoteInput";
 import NoteDisplay from "../NoteDisplay/NoteDisplay";
 import { Grid } from "@material-ui/core";
+import NoteList from "../NoteList/NoteList";
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
       >
         <Grid item xs={8}>
           <NoteInput />
+        </Grid>
+        <Grid item xs={3}>
+          <NoteList />
         </Grid>
         <Grid item xs={8}>
           <NoteDisplay />
