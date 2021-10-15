@@ -1,0 +1,8 @@
+.note-list-header {
+    margin: 16px;
+}
+
+.note-list-list {
+    overflow-y: auto;
+    max-height: 334px;
+}
