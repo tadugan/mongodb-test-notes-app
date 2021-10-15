@@ -1,6 +1,6 @@
 import { Button, Card, Grid, MenuItem, Select, TextField } from '@material-ui/core';
-import axios from 'axios';
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import './NoteInput.css';
 
 function NoteInput() {
@@ -8,6 +8,8 @@ function NoteInput() {
     const [ category, setCategory ] = useState('category');
     const [ title, setTitle ] = useState('');
     const [ text, setText ] = useState('');
+
+    const dispatch = useDispatch();
 
     const addNote = (event) => {
         event.preventDefault();
@@ -17,19 +19,13 @@ function NoteInput() {
         }
 
         const newNote = {
-            title: title,
-            textBody: text,
-            category: category
+                title: title,
+                textBody: text,
+                category: category
         }
 
         // Add note to database
-        axios.post('/notes', newNote)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.log(err);
-            });
+        dispatch({type: 'SUBMIT_NEW_NOTE', payload: newNote});
 
         clearInputs();
     };
@@ -41,13 +37,13 @@ function NoteInput() {
     };
 
     const areInputsInvalid = () => {
-        if (text == '') {
+        if (text === '') {
             return true;
         }
-        else if (title == '') {
+        else if (title === '') {
             return true;
         } 
-        else if (category === 'category' || category == '') {
+        else if (category === 'category' || category === '') {
             return true;
         }
         else {

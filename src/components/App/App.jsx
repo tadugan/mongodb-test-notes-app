@@ -14,10 +14,10 @@ function App() {
         justifyContent='center'
         alignItems='center'
       >
-        <Grid item>
+        <Grid item xs={8}>
           <NoteInput />
         </Grid>
-        <Grid item>
+        <Grid item xs={8}>
           <NoteDisplay />
         </Grid>
       </Grid>
