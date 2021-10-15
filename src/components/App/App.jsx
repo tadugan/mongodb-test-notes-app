@@ -13,7 +13,7 @@ function App() {
         spacing={2}
         direction='row'
         justifyContent='center'
-        alignItems='center'
+        alignItems='flex-start'
       >
         <Grid item xs={8}>
           <NoteInput />
